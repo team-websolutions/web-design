@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Solutions</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* ===== RESET ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+    body { line-height: 1.6; color: #333; }
+
+    /* ===== HEADER ===== */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 40px; background: #0a2540; color: #fff;
+      position: 70px;; width: 100%; top: 0; z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    header .logo { display: flex; align-items: center; font-weight: bold; font-size: 1.2rem; }
+    header .logo img { width: 35px; height: 35px; margin-right: 10px; }
+    header .logo span { color: #3b82f6; }
+    header nav ul { display: flex; list-style: none; }
+    header nav ul li { margin-left: 20px; }
+    header nav ul li a { color: #fff; text-decoration: none; font-weight: bold; }
+    header nav ul li a:hover { color: #3b82f6; }
+    /* HERO SECTION MOBILE */
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 15px 50px 15px; /* reduce top/bottom padding */
+    text-align: center;             /* keep text centered */
+  }
+
+  .hero h1 {
+    font-size: 2rem;                /* smaller heading */
+    line-height: 1.2;               /* better line spacing */
+  }
+
+  .hero p {
+    font-size: 1rem;                /* smaller paragraph text */
+    max-width: 100%;                /* fill screen width */
+    margin: 0 auto;                 /* center */
+  }
+}
+
+/* Extra small screens (<480px) */
+@media (max-width: 480px) {
+  .hero {
+    padding: 80px 10px 40px 10px;   /* reduce even more */
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+}
+
+    /* ===== SECTION SPACING ===== */
+    section { padding: 80px 20px 60px 20px; }
+
+    /* ===== HERO ===== */
+    .hero { background: #e0f2fe; text-align: center; padding: 120px 20px 60px 20px; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 20px; }
+    .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
+
+    /* ===== SERVICES ===== */
+    .services { background: #f5f5f5; text-align: center; }
+    .services h2 { font-size: 2rem; margin-bottom: 10px; }
+    .service-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+    .service-cards .card {
+      background: #fff; padding: 20px; border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .service-cards .card:hover {
+      transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+    .service-cards .card i { font-size: 2rem; margin-bottom: 10px; color: #3b82f6; }
+
+    /* ===== PACKAGES ===== */
+    .packages { background: #f5f5f5; text-align: center; }
+    .packages h2 { font-size: 2rem; margin-bottom: 10px; }
+    .package-row {
+      display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+    }
+    .package-card {
+      flex: 1 1 300px; max-width: 350px;
+      border: 1px solid #ccc; border-radius: 12px;
+      padding: 20px; background-color: #f9f9f9;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex; flex-direction: column; justify-content: flex-start;
+    }
+    .package-card:hover {
+      transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+    .package-card h2 { text-align: center; margin-bottom: 15px; font-size: 1.5em; }
+    .package-option { border-top: 1px dashed #aaa; padding-top: 10px; margin-top: 10px; }
+    .package-option:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+
+    /* ===== PROJECTS ===== */
+    .projects { text-align: center; }
+    .projects h2 { font-size: 2rem; margin-bottom: 40px; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+    .project-card {
+      position: relative; border-radius: 12px; overflow: hidden;
+      background: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: 0.3s ease; padding: 20px;
+    }
+    .project-card img { width: 100%; height: 220px; object-fit: contain; background: #f8fafc; padding: 10px; }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+    .project-card .overlay {
+      position: absolute; inset: 0; background: rgba(0,0,0,0.65);
+      color: #fff; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; opacity: 0;
+      transition: 0.3s ease; text-align: center; padding: 20px;
+    }
+    .project-card:hover .overlay { opacity: 1; }
+
+    /* ===== HOW WE WORK ===== */
+    .how-we-work { background: #f5f5f5; text-align: center; }
+    .how-we-work h2 { font-size: 2rem; margin-bottom: 40px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .step {
+      background: #fff; padding: 20px; border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .step i { font-size: 2rem; color: #3b82f6; margin-bottom: 10px; }
+    .step h3 { margin-bottom: 10px; color: #0a2540; }
+    .step:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+
+    /* ===== ABOUT ===== */
+    .about { text-align: center; padding-bottom: 60px; background: #f5f5f5; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; }
+    .about-grid ul { list-style: none; padding-left: 0; margin-top: 20px; }
+    .about-grid ul li { margin-bottom: 15px; }
+
+/* ===== HOSTING SECTION ===== */
+.hosting {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hosting-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hosting-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-top: 30px;
+}
+
+.hosting-card h4 {
+  margin: 15px 0;
+  font-size: 24px;
+  color: #000;
+}
+
+.hosting-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.hosting-card ul li {
+  margin: 10px 0;
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #333;
+}
+
+/* ===== FOOTER ===== */
+.footer { 
+  background: #0a2540; 
+  color: #fff; 
+  padding: 60px 50px 20px 50px; 
+  text-align: center; 
+}
+
+.footer-top { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 40px; 
+  margin-bottom: 40px; 
+}
+
+.footer-left ul { list-style: none; margin-top: 10px; }
+.footer-left ul li { margin-bottom: 8px; font-size: 0.95rem; }
+.footer-center p { margin-top: 10px; font-size: 0.95rem; opacity: 0.85; }
+.footer-right p { margin-top: 8px; font-size: 0.95rem; }
+.footer i { margin-right: 8px; color: #3b82f6; }
+.footer-bottom { 
+  text-align: center; 
+  border-top: 1px solid rgba(255,255,255,0.2); 
+  padding-top: 15px; 
+  font-size: 0.9rem; 
+  opacity: 0.7; 
+}
+
+/* ===== FOOTER MOBILE ===== */
+@media(max-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1fr; /* stack sections vertically */
+    gap: 20px; /* optional smaller gap on mobile */
+    text-align: center; /* center all content */
+  }
+
+  .footer-left, .footer-center, .footer-right {
+    margin: 0 auto; /* center each block */
+  }
+}
+
+
+    @media(max-width: 992px){
+      .service-cards, .package-row, .project-grid, .steps, .about-grid { grid-template-columns: 1fr; }
+      header nav ul { flex-direction: column; gap: 10px; }
+    }
+
+    body { overflow-x: hidden; }
+
+@media(max-width: 480px){
+  .hero { padding: 80px 15px 40px 15px; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 1rem; }
+  .service-cards, .project-grid, .steps, .about-grid { grid-template-columns: 1fr; gap: 15px; }
+  .package-card { padding: 15px; }
+  .project-card img { height: auto; }
+  h1, h2, h3, h4 { word-wrap: break-word; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header>
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Logo Icon">
+      Web <span>Solutions</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#how-we-work">How We Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <h1>Creative Web & Graphic Design Solutions</h1>
+    <p>From stunning websites to logos, flyers, posters, and ads — we craft designs that grow your business and make your brand stand out.</p>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+      <div class="card"><i class="fas fa-laptop-code"></i><h3>Website Design & Development </h3><p>Build a stunning, responsive website that showcases your business and engages your audience.</p></div>
+      <div class="card"><i class="fas fa-tools"></i><h3>Website Maintenance</h3><p>Keep your website secure, up-to-date, and running smoothly at all times.</p></div>
+      <div class="card"><i class="fas fa-palette"></i><h3>Branding Package</h3><p>Design a unique and memorable logo that defines your brand identity.</p></div>
+      <div class="card"><i class="fas fa-file-alt"></i><h3>Flyer Design / Advertisement </h3><p>Create vibrant and engaging flyers to promote your business effectively.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== PACKAGES ===== -->
+  <section id="packages" class="packages">
+    <h2>Business & Service Packages</h2>
+    <div class="package-row">
+      <!-- Package cards go here (your previous package HTML) -->
+      <!-- Keep all 4 cards: Website, Maintenance, Branding, Flyer -->
+      <!-- Already 2 per row on desktop due to flexbox and max-width -->
+      <div class="package-card">
+        <h2>Website Design & Development</h2>
+        <div class="package-option"><h4>🟢 Basic - R3 000</h4><p>We create conversion-focused websites with strong calls-to-action, lead capture, social proof, mobile optimization, professional branding, and a clean, modern design that builds trust and drives results.</p></div>
+        <div class="package-option"><h4>🔵 Standard - R7 000</h4><p>Up to 10 pages Full branding integration Custom contact/booking forms Basic SEO setup Social media integration Performance optimization Responsive design with light animations</p></div>
+        <div class="package-option"><h4>🔴 Premium - R10 000</h4><p>Full e-commerce setup Advanced branding & design Advanced SEO Email/marketing integrations Payment gateway setup Enhanced security & performance</p></div>
+      </div>
+
+      <div class="package-card">
+        <h2>Website Maintenance</h2>
+        <div class="package-option"><h4>🟢 Basic - R450/mo</h4><p> Monthly software updates (CMS, plugins, themes). Regular backups of site and database. Check website uptime. Minor tweaks (text/image updates).</p></div>
+        <div class="package-option"><h4>🔵 Standard - R850/mo</h4><p>Everything in Basic. Performance optimization (speed checks, caching, image optimization). Minor content updates (add/remove pages, adjust images) Security monitoring for malware or threats.</p></div>
+        <div class="package-option"><h4>🔴 Premium - R1,500/mo</h4><p>Everything in Standard. Weekly backups instead of monthly. Priority support for urgent issues. Detailed monthly performance & security reports. Optional: Security scans for vulnerabilities.</p></div>
+      </div>
+
+      <div class="package-card">
+        <h2>Branding Package</h2>
+        <div class="package-option"><h4>🟢 Basic - R1,800</h4><p>2 logo concepts. Color palette selection. Typography/font choices. Logo files in common formats (PNG, JPG, SVG).</p></div>
+        <div class="package-option"><h4>🔵 Standard - R3,500</h4><p>Everything in Basic. Full brand system (logo variations, color palette, fonts). Brand style guide (colors, fonts, logo usage). Business card and social media cover designs.</p></div>
+        <div class="package-option"><h4>🔴 Premium - R6,500</h4><p>Everything in Standard. Logo animation for digital use. Stationery templates (letterheads, email signatures). Flyers, posters, and marketing materials designed. Unlimited minor revisions until client is satisfied. Optional: Social media branding kits, brand guideline PDFs or videos.</p></div>
+      </div>
+
+      <div class="package-card">
+        <h2>Flyer Design / Advertisement</h2>
+        <div class="package-option"><h4>🟢 Basic - R600</h4><p>Single-sided flyer. 1 design concept. Print-ready PDF (CMYK) and social media version. Up to 2 revisions. Delivery in 2–3 days.</p></div>
+        <div class="package-option"><h4>🔵 Standard - R1,200</h4><p>Double-sided flyer. 2 design concepts. Professional layout and typography.Print & social media-ready.Up to 3 revisions.Delivery in 2–4 days.</p></div>
+        <div class="package-option"><h4>🔴 Premium - R2,000</h4><p>Double-sided premium layout. 3 design concepts with copy/layout assistance. Optimized for print and social media. Optional source files (PSD/AI). Up to 5 revisions. Delivery in 3–5 days.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Offer ===== -->
+  <section id="projects" class="projects">
+    <h2>What We Offer</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="images/Website.png" alt="Website Project">
+        <div class="overlay"><i class="fas fa-laptop-code"></i><h3>Website Development</h3><p>Modern responsive business websites.</p></div>
+      </div>
+      <div class="project-card">
+        <img src="images/Maintenance.png" alt="Maintenance Project">
+        <div class="overlay"><i class="fas fa-tools"></i><h3>Website Maintenance</h3><p>Ongoing updates and monitoring.</p></div>
+      </div>
+      <div class="project-card">
+        <img src="images/Branding.png" alt="Branding Project">
+        <div class="overlay"><i class="fas fa-palette"></i><h3>Branding Package</h3><p>Professional logos & identity kits.</p></div>
+      </div>
+      <div class="project-card">
+        <img src="images/add.png" alt="Flyer Design / Advertisement Project">
+        <div class="overlay"><i class="fas fa-bullhorn"></i><h3>Flyer / Advertisement</h3><p>High-impact marketing campaigns.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW WE WORK ===== -->
+  <section id="how-we-work" class="how-we-work">
+    <h2>How We Work</h2>
+    <p class="section-subtitle">A simple and professional process designed for results.</p>
+    <br>
+    <div class="steps">
+      <div class="step"><i class="fas fa-comments"></i><span>01</span><h3>Consultation & Quotation</h3><p>Understand goals & vision.</p></div>
+      <div class="step"><i class="fas fa-pencil-ruler"></i><span>02</span><h3>Planning & Design</h3><p>Wireframes & visual concepts.</p></div>
+      <div class="step"><i class="fas fa-code"></i><span>03</span><h3>Development</h3><p>Clean, secure, scalable code.</p></div>
+      <div class="step"><i class="fas fa-check-circle"></i><span>04</span><h3>Review & Approval</h3><p>Refine project to perfection.</p></div>
+      <div class="step"><i class="fas fa-rocket"></i><span>05</span><h3>Launch</h3><p>Deploy smoothly & efficiently.</p></div>
+      <div class="step"><i class="fas fa-chart-line"></i><span>06</span><h3>Growth & Monitoring</h3><p>Monitor & optimize performance.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== WEBSITE HOSTING ===== -->
+<section id="hosting" class="hosting">
+  <div class="hosting-container">
+    <h2>Website Hosting & Maintenance</h2>
+    <p class="section-subtitle">Reliable, secure, and fully managed hosting for your business.</p>
+
+    <div class="hosting-card">
+      <h3>GitHub Professional Hosting Package</h3>
+      <h4>R500 / Month</h4>
+      <ul>
+        <li>✔ Secure & Reliable Website Hosting</li>
+        <li>✔ Free SSL Certificate (HTTPS Security)</li>
+        <li>✔ Monthly Backups</li>
+        <li>✔ Website Security Monitoring</li>
+        <li>✔ Speed Optimization</li>
+        <li>✔ Uptime Monitoring</li>
+        <li>✔ 2 Minor Content Updates Per Month</li>
+        <li>✔ Priority Support</li>
+      </ul>
+      <p>Your website stays secure, fast, and professionally managed — giving you peace of mind while you focus on growing your business.</p>
+    
+    </div>
+  </div>
+</section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about">
+    <div class="about-grid">
+      <div>
+        <h2>About Us</h2>
+        <p>Web Solutions helps companies build a strong online presence through websites, branding, social media, and advertising.</p>
+        <h3>Our Mission</h3>
+        <p>Affordable and professional digital solutions that help businesses grow online.</p>
+      </div>
+      <div>
+        <h3>What We Offer</h3>
+        <ul>
+          <li><i class="fas fa-check-circle" style="color:#3b82f6;"></i> Affordable Pricing</li>
+          <li><i class="fas fa-check-circle" style="color:#3b82f6;"></i> Fast Delivery</li>
+          <li><i class="fas fa-check-circle" style="color:#3b82f6;"></i> High Quality Design</li>
+          <li><i class="fas fa-check-circle" style="color:#3b82f6;"></i> Ongoing Support</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer" class="footer">
+    <div class="footer-top">
+      <div class="footer-left">
+        <h3>Web Solutions</h3>
+        <ul>
+          <li><i class="fas fa-map-marker-alt"></i> Johannesburg, South Africa</li>
+          <li><i class="fas fa-phone-alt"></i> +27 67 830 5373 </li>
+          <li><i class="fas fa-envelope"></i>websolutions.team@outlook.com</li>
+        </ul>
+      </div>
+      <div class="footer-center">
+        <h3>About</h3>
+        <p>Creative design & development agency helping businesses grow online.</p>
+      </div>
+      <!-- LEFT --> <div class="footer-left"> <h3><i class="fas fa-credit-card"></i> Payments</h3> <ul> <li>✔ Request a Service</li> <li>✔ 50% Upfront Payment</li> <li>✔ Project Development</li> <li>✔ Final 50% & Delivery</li> </ul> </div>
+    </div>
+    <div class="footer-bottom">© 2026 Web Solutions. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
